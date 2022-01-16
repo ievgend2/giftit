@@ -1,8 +1,12 @@
+
+<div class="giftContainer  mt-5">
+
+  <h1 class="text-center sign mb-3">New Gift</h1>
+<div class="d-flex justify-content-center m-3">
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,28 +14,13 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.collection_select :category_id, Category.all,:id,:name, include_blank: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.text_field :title, class:"form-control mb-3", placeholder: "Title" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, {include_blank:true}, {class:"form-select mb-3"} %>
+    <%= form.text_area :description, rows: 4 , class:"form-control mb-3", placeholder:"Provide description"%>
+     <%= form.label :Upload_image %>:
+    <%= form.file_field :image, class:"form-control mb-3"%>
+  <%= form.submit "Create Post", class: "btn btn-info mt-1 form-control mb-3" %>
+<%= link_to 'Go Back', posts_path, class: "d-flex justify-content-end no_underscore " %>
 <% end %>
+</div>
+</div>

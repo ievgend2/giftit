@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :find_conversation
-  
+
   def index
     @messages = @conversation.messages
     @message = @conversation.messages.new
@@ -12,11 +12,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
+    @message.user = current_user
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     end
   end
 
+  def destroy
+    @message = Message.find(params[:message_id])
+    @message.destroy
+  end
 
   private
     def message_params

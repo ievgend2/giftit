@@ -1,3 +1,8 @@
+
+<div class="giftContainer  mt-5">
+
+  <h1 class="text-center sign mb-3">New Category</h1>
+<div class="d-flex justify-content-center m-3">
 <%= form_with(model: category, local: true) do |form| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +16,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <%= form.text_field :name,class:"form-control mb-3", placeholder: "Name" %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Create Category", class: "btn btn-info mt-1 form-control mb-3" %>
+
+  <%= link_to 'Go Back', categories_path, class: "d-flex justify-content-end no_underscore " %>
+
 <% end %>
+</div>
+</div>

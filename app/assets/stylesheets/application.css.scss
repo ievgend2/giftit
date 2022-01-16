@@ -14,8 +14,31 @@
  *= require_self
  */
 @import "bootstrap";
+.margin-bottom {
+ margin-bottom: 75px !important;
+}
+// .navbar{
+//   font-weight: bold !important;
+//   color: #78c2ad !important;
+// }
 
-.navbar .navbar-brand b {
-  font-weight: bold;
-  color: #5bc0de;
+.bg-light {
+  background-color: #f7f7f7 !important;
+}
+
+.btn-info {
+  background-color: #78c2ad !important;
+
+}
+find
+.btn-secondary {
+  background-color: #78c2ad !important;
+}
+
+.btn-rose {
+  background-color: #fddcd7 !important;
+}
+
+.list-group-item-secondary {
+  background-color: #fddcd7  !important;
 }

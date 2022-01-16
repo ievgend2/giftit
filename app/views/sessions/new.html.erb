@@ -1,13 +1,10 @@
-<h1>Log In</h1>
-
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :username %><br />
-    <%= text_field_tag :username, params[:username] %>
+<div class="loginContainer mt-5 col-2">
+<h1 class="login text-center mb-3">Log In</h1>
+  <div class="m-3">
+    <%= form_tag sessions_path do %>
+        <%= text_field_tag :username, params[:username], class:"form-control mb-3", placeholder: "Username" %>
+        <%= password_field_tag :password, params[:password], class:"form-control mb-3", placeholder: "Password" %>
+        <%= submit_tag "Log In", class: "btn btn-info mt-1 form-control" %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log In" %></div>
-<% end %>
+</div>

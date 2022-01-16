@@ -1,16 +1,23 @@
-<h1 class="title is-4">Message <%= @conversation.recipient.username %></h1>
-
-
+<div class="container mt-5">
+<h2 class="list-group-item list-group-item-secondary  mb-3">Conversation History</h2>
 <% @messages.each do |message| %>
- <% if message.body %>
-  <% user = User.find(message.user_id) %>
-  <%= user.username %>: 
-  <%= message.body %>
- <% end %>
+  <% if message.body %>
+    <% user = User.find(message.user_id) %>
+      <article class="messages row mb-3 m-0 p-0 ">
+          <div class="col-md-2 d-flex flex-column p-2 botder_right justify-content-center">
+          <div class="rounded float-start"><%= avatar_for(user) %></div>
+          <strong><%= user.username %></strong>
+          <small class="text-muted"><%= message.sent_time %></small>
+            </div>
+          <div class="col-md-10 p-2">
+            <div><%= message.body %></div>
+            </div>
+      </article>
+  <% end %>
 <% end %>
-
 <%= form_for [@conversation, @message] do |f| %>
- <%= f.text_area :body %>
- <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
- <%= f.submit "Send Reply" %>
+    <%= f.text_area :body, placeholder: "Your message", rows: 5, class:"form-control" %>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <%= f.submit "Send", class:"mx-auto btn btn-secondary mt-3 mb-5" %>
 <% end %>
+</div>

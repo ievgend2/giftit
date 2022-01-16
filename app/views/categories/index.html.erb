@@ -1,27 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="container mt-5">
 
-<h1>Categories</h1>
 
-<table>
+<h1 class="list-group-item list-group-item-secondary mb-3">Categories</h1>
+
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th colspan="6">Category Name</th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="col-md-10"><%= category.name %></td>
+        <td><%= link_to 'Show', category, class:"no_underscore" %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), class:"no_underscore"  %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class:"no_underscore"  %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Category', new_category_path, class:"btn btn-rose" %>
+</div>

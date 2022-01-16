@@ -1,40 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="container mt-4 ">
+<h1 id="gifts" class="display-4 text-center text-muted">Gifts</h1>
 
-<h1 id="speakers" class="display-4 text-center my-5 text-muted">Gifts</h1>
+<%= form_tag posts_path, :method => 'get' do %>
+<div class="input-group mb-4">
 
-<div class="container ">
-  <div class="card-deck">
+  <%= text_field_tag :search, params[:search], class:"form-control"%>
+  <%= submit_tag "Search", class:"btn btn-info" %>
+</div>
+<% end %>
+<div class="text-center">
+
+
+<%= link_to "Create New Gift", new_post_path, class:"btn btn-rose mb-4"%>
+</div>
+
+<% if @posts.present? %>
+
+<%= will_paginate @posts, :page_links => false  %>
+
     <% @posts.each do |post| %>
-      <div class="col-md-6 col-lg-4">
-        <div class="card mb-3">
-          <div class="card-img-top mb-3 mx-auto">
-            <%= link_to image_tag(post.image, style:'width:100%') if post.image.attached? %>
+        <div class="card mb-4 mx-auto shadow rounded" style="max-width: 960px;">
+            <div class="row g-1">
+              <div class="col-md-4 p-3 bg-light d-flex align-items-center ">
+                <%= link_to image_tag(post.image, class:"img-fluid rounded-start") if post.image.attached? %>
+              </div>
+                <div class="col-md-8">
               <div class="card-body">
-                <h4 class="card-title"><%= post.title %></h4>
-                <p class="card-text"><%= truncate(post.description, length: 70) %></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <%= link_to 'See Full Post', post, class: "btn btn-info mx-auto d-block" %>
-                  <% if current_user %>
-                    <%= link_to 'Edit Post', edit_post_path(post) %>  |
-                    <%= link_to 'Destroy', post, method: :delete %>
-                  <% end %>
-                </small>
-              </div>
+            <h4 class="card-title"><%= post.title %></h4>
+            <p class="card-text"> Category: <%= post.category.name %></p>
+            <p class="card-text"><%= post.description %></p>
+            <div class="d-flex justify-content-end ">
+            <%= link_to 'See Full Post', post, class: "btn btn-rose" %>
             </div>
+          </div>
+          </div>
         </div>
-      </div>
+        </div>
     <% end %>
-  </div>
-</div>
-<div class="container ">
-  <% if current_user %>
-    <p class="newgift text-center">Do you have study materials you would like to gift? Click <%= link_to 'New Gift', new_post_path %> to get started.</p>
-  <% else %>
-    <p class="text-center">Have study materials you would like to gift? Please <%= link_to "Sign Up", signup_path %> for an account. 
-    <br>
-    Already have an account? Please <%= link_to "Log In", login_path %> to post a new gift or edit/delete an existing one.</p>  
-  <% end %>
-<%= link_to "New Category", new_category_path %>
-</div>
+
+<% else %>
+  <h5 class="text-center mt-3"> Sorry, no Gifts have been posted.</h5>
+  <p class="text-center">Do you have a resource you would like to gift? Please click the Create New Gift button to get started.</p>
+<% end %>

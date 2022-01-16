@@ -1,0 +1,16 @@
+<div class="signupContainer mt-5 text-center col-2">
+  <h2 class="sign my-3 ">My Profile</h2>
+    <%= avatar_for(@user) %>
+  <div class="card-body">Username:
+    <%= current_user.username %>
+    <div class="field form-group">Email Address:
+      <%= current_user.email %>
+    </div>
+    <div class="field form-group mb-3">Password:
+      <%= "*****" %>
+    </div>
+      <td><%= link_to 'Edit', edit_user_path, class:"btn btn-info" %></td>
+      <td> <%= link_to "Delete account", @user, class:"btn btn-info", method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <%= link_to "Back", home_index_path, class:"btn btn-info" %>
+        </div>
+  </div>

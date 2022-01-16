@@ -1,0 +1,23 @@
+<h1>List of Users:</h1>
+
+<table>
+  <tbody>
+    <% @user.each do |user| %>
+      <tr>
+          <td><%= link_to user.username, user_path(user) %></td>
+          <td><%= user.email %></td>
+          <td><%= button_to 'Edit', edit_user_path(user), class:"btn btn-dark", method: 'get'%></td>
+          <td><%= button_to 'Remove', user_path(user), class:"btn btn-dark", method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+
+<%= link_to 'Add New User', signup_path,class:"btn btn-dark" %>
+<%= link_to "Back", home_index_path, class:"btn btn-dark" %>
+
+
+
+
+        

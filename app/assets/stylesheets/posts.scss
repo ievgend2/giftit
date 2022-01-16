@@ -2,3 +2,97 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// .field {
+//   label {
+//     display: block;
+//     margin-top: 10px;
+//   }
+// }
+
+.actions {
+  margin-top: 20px;
+}
+
+.authoractions,
+.converstations {
+  border-radius:  5px;
+  border: 1px solid #78c2ad;
+  padding: 15px;
+  background: #f7f7f7;
+}
+
+
+
+.giftContainer {
+  border: 1px solid #78c2ad;
+  background: #fddcd7 ;
+  border-radius: 10px;
+  width: 375px;
+  padding: 5px;
+  margin: auto;
+}
+
+.no_underscore{
+  color: #acacac ;
+  text-decoration: none ;
+  font-weight: bold ;
+}
+
+.no_underscore:hover{
+  color: #4a4a4a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.no_underscore_white{
+  color: #ffffff ;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.no_underscore_white:hover{
+  color: #FDDCD7 ;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}
+
+.previous_page {
+  display: flex;
+  justify-content: space-between;
+  color: #acacac ;
+  text-decoration: none ;
+  font-weight: bold ;
+}
+
+.previous_page:hover {
+  color: #000000  ;
+  text-decoration: none ;
+  font-weight: bold ;
+}
+
+.next_page {
+  display: flex;
+  justify-content: space-between;
+  color: #acacac ;
+  text-decoration: none ;
+  font-weight: bold ;
+}
+
+.next_page:hover {
+  display: flex;
+  justify-content: space-between;
+  color: #000000  ;
+  text-decoration: none ;
+  font-weight: bold ;
+}
+
+
+#file-upload-button {
+  content: "Choose Avatar";
+}

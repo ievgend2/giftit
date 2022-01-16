@@ -1,18 +1,23 @@
-<h1>My Inbox</h1>
-<h1>All Conversations:</h1>
-<% @conversations.each do |conversation| %>
- <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-  <% if conversation.sender_id == current_user.id %>
-   <% recipient = User.find(conversation.recipient_id) %>
-  <% else %>
-   <% recipient = User.find(conversation.sender_id) %>
-  <% end %>
-  <h3><%= link_to recipient.username, conversation_messages_path(conversation)%></h3>
- <% end %>
-<% end %>
-<h1>All Users:</h1>
-<% @user.each do |user| %>
- <% if user.id != current_user.id %><h3>
- <%= link_to user.username, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></h3>
- <% end %>
-<% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-secondary text-center"><h2>My Conversations</h2></li>
+          <% if @conversations.length === 0 %>
+            <p class="list-group-item m-0"> Sorry, no conversations have been found.</p>
+             <% else %>
+             <% @conversations.each do |conversation| %>
+                         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                           <% if conversation.sender_id == current_user.id %>
+                             <% recipient = User.find(conversation.recipient_id) %>
+                           <% else %>
+                             <% recipient = User.find(conversation.sender_id) %>
+                           <% end %>
+                         <% end %>
+                         <%= link_to ("Message " + recipient.username), conversation_messages_path(conversation), class: "list-group-item no_underscore" %>
+                  <% end %>
+         <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
